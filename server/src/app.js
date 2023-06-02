@@ -14,4 +14,10 @@ app.get('/status', (req, res) => {
   })
 })
 
+app.post('/register', (req, res) => {
+  res.send({
+    message: `Ciao ${req.body.email}! Il tuo account è stato registrato correttamente`
+  })
+})
+
 app.listen(process.env.PORT || 8081)
