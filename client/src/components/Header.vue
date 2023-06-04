@@ -5,7 +5,7 @@
           alt="Vuetify Logo"
           class="shrink mr-2 hidden-sm-and-down"
           contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
+          src="../../public/plettro.png"
           transition="scale-transition"
           width="40"
         />
