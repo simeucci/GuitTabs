@@ -23,13 +23,38 @@
       <v-spacer></v-spacer>
 
       <v-toolbar-items>
-        <v-btn text @click="navigateTo({name: 'login'})">
+        <v-btn
+          v-if="!$store.state.isUserLoggedIn"
+          text 
+          @click="navigateTo({name: 'login'})"
+        >
           Accedi
         </v-btn>
       </v-toolbar-items>
       <v-toolbar-items>
-        <v-btn text @click="navigateTo({name: 'register'})">
+        <v-btn 
+          v-if="!$store.state.isUserLoggedIn"
+          text 
+          @click="navigateTo({name: 'register'})"
+        >
           Registrati
+        </v-btn>
+      </v-toolbar-items>
+      <v-toolbar-items>
+        <span
+          class="pt-5" 
+          v-if="$store.state.isUserLoggedIn"
+        >
+          Ciao {{$store.state.user.email}}
+      </span>
+      </v-toolbar-items>
+      <v-toolbar-items>
+        <v-btn 
+          v-if="$store.state.isUserLoggedIn"
+          text 
+          @click="navigateTo({name: 'logout'})"
+        >
+          LOGOUT
         </v-btn>
       </v-toolbar-items>
 

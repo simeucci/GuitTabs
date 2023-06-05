@@ -39,7 +39,8 @@ module.exports = {
           error: 'Dati di accesso incorretti (utente inesistente).'
         })
       }
-      const isPasswordValid = (password === user.password)
+      // const isPasswordValid = (password === user.password)
+      const isPasswordValid = await user.comparePassword(password)
       if (!isPasswordValid) {
         return res.status(403).send({
           error: 'Dati di accesso incorretti (password sbagliata).'
@@ -52,6 +53,7 @@ module.exports = {
       })
     } catch (err) {
       // email già esistente
+      console.log(err)
       res.status(500).send({
         error: 'E\' occorso un errore durante l\'accesso. Controllare!'
       })
