@@ -15,7 +15,10 @@
       </div>
 
       <v-toolbar-items>
-        <v-btn text>
+        <v-btn 
+         text
+         @click="navigateTo({name: 'songs'})"
+         >
           Sfoglia
         </v-btn>
       </v-toolbar-items>
@@ -52,9 +55,9 @@
         <v-btn 
           v-if="$store.state.isUserLoggedIn"
           text 
-          @click="navigateTo({name: 'logout'})"
+          @click="logout"
         >
-          LOGOUT
+          Esci
         </v-btn>
       </v-toolbar-items>
 
@@ -75,6 +78,11 @@
         }
         // route as expected
         this.$router.push(newRoute)
+      },
+      logout () {
+        this.$store.dispatch('setToken', null)
+        this.$store.dispatch('setUser', null)
+        this.navigateTo({name: 'home'})
       }
     }
   }

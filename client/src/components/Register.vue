@@ -1,14 +1,9 @@
 <template>
-
   <v-container>
     <v-row class="text-center" no-gutters>
       <v-col md="6" offset-md="3">
-        <div class="white elevation-2">
-          <v-toolbar flat dense class="light-blue" dark>
-            <v-toolbar-title>Registrazione</v-toolbar-title>
-          </v-toolbar>
-          <div class="pl-4 pr-4 pt-2 pb-2">
-            <form
+        <panel title="Registrazione">
+          <form
               name="guittabs-form-registrazione"
               autocomplete="off">
               <v-text-field
@@ -29,15 +24,15 @@
                 >Registrati
               </v-btn>
             </form>
-          </div>
-        </div>
+        </panel>
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
-  import AuthenticationService from '@/services/AuthenticationService';
+  import AuthenticationService from '@/services/AuthenticationService'
+  import Panel from '@/components/Panel.vue'
   export default {
     data () {
       return {
@@ -46,9 +41,11 @@
         error: null
       }
     },
+    components: {
+      Panel
+    },
     methods:{
       async register () {
-
         try {
           /*
           await AuthenticationService.register({
@@ -66,9 +63,7 @@
         } catch (error) {
           this.error = error.response.data.error
         }
-
         //console.log('il pulsante Registrati è stato cliccato', this.email, this.password)
-
         // const response = 
         // console.log(response.data)
       }
