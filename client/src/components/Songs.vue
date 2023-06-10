@@ -1,25 +1,14 @@
 <template>
   <v-container>
     <v-row class="text-center" no-gutters>
-      <v-col md="6" offset-md="3">
+      <v-col md="10" offset-md="1">
         <panel title="Brani">
           <v-btn to="/songs/create" slot="action" class="light-blue accent-2" dark fab medium>
             <v-icon large>mdi-plus</v-icon>
           </v-btn>
-
-          <div v-for="song in songs" class="song" :key="song.id">
-
-            <v-row no-gutters>
-              <v-col md="6" class="text-center">
-                <div class="song-title">
-                  {{ song.titolo }}
-                </div>
-                <div class="song-artist">
-                  {{ song.artista }}
-                </div>
-                <div class="song-genre">
-                  {{ song.genere }}
-                </div>
+          <div v-for="song in songs" :key="song.id">
+            <song-base :song="song">
+              <div slot="pulsanti">
                 <v-btn dark class="light-blue" @click="navigateTo({
                   name: 'song',
                   params: {
@@ -28,14 +17,9 @@
                 })">
                   Apri
                 </v-btn>
-
-              </v-col>
-              <v-col md="6">
-                <img class="song-album-image" :src="song.albumImageUrl" />
-              </v-col>
-            </v-row>
+              </div>
+            </song-base>
           </div>
-
         </panel>
       </v-col>
     </v-row>
@@ -45,9 +29,11 @@
 <script>
 import SongsService from '@/services/SongsService'
 import Panel from '@/components/Panel.vue'
+import SongBase from '@/components/SongBase.vue'
 export default {
   components: {
-    Panel
+    Panel,
+    SongBase
   },
   data() {
     return {
@@ -66,30 +52,4 @@ export default {
 }
 </script>
 
-<style scoped>
-.song {
-  border: 3px solid white;
-  border-radius: 15%;
-  background-color: lightyellow;
-  padding: 20px;
-  /* height: 330px; */
-  overflow: hidden;
-}
-
-.song-title {
-  font-size: 30px;
-}
-
-.song-artist {
-  font-size: 24px;
-}
-
-.song-genre {
-  font-size: 18px;
-}
-
-.song-album-image {
-  width: 70%;
-  margin: 0 auto auto;
-}
-</style>
+<style scoped></style>

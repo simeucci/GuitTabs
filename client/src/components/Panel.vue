@@ -1,5 +1,5 @@
 <template>
-  <div class="white elevation-2">
+  <div class="white elevation-2 bordi-rotondi">
     <v-toolbar flat dense class="light-blue" dark>
       <v-toolbar-title>{{ title }}</v-toolbar-title>
       <v-spacer></v-spacer>
@@ -21,4 +21,11 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.bordi-rotondi{
+  border-radius: 13px;
+}
+.bordi-rotondi>header{
+  border-radius: 13px 13px 0 0;
+}
+</style>

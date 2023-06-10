@@ -15,11 +15,14 @@ fs
   .readdirSync(__dirname)
   .filter((file) => file !== 'index.js')
   .forEach((file) => {
-    // const model = sequelize.import(path.join(__dirname, file))
     const model = require(path.join(__dirname, file))(sequelize, SequelizeLib)
     db[model.name] = model
   })
 
 db.sequelize = sequelize
 db.Sequelize = SequelizeLib
+
+db.User.belongsToMany(db.Song, { through: db.UserSong_ })
+db.Song.belongsToMany(db.User, { through: db.UserSong_ })
+
 module.exports = db

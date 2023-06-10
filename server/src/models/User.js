@@ -7,7 +7,7 @@ async function hashPassword (user) {
   if (!user.changed('password')) {
     return
   }
-  console.log('hashPassword was run')
+  // console.log('hashPassword was run')
   const hashPassword = await bcrypt
     .genSalt(SALT_FACTOR)
     .then((salt) => bcrypt.hash(user.password, salt, null))
