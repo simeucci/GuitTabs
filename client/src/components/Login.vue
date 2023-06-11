@@ -29,7 +29,6 @@
 
 <script>
   import AuthenticationService from '@/services/AuthenticationService'
-  import Panel from '@/components/Panel.vue'
   export default {
     data () {
       return {
@@ -37,9 +36,6 @@
         password: '',
         error: null
       }
-    },
-    components: {
-      Panel
     },
     methods:{
       async login () {

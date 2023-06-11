@@ -29,7 +29,6 @@
 
 <script>
 // COMPONENTI INSTALLATI
-import Panel from '@/components/Panel.vue'
 import SongBase from '@/components/SongBase.vue'
 import YouTube from '@/components/ViewSong/YouTube.vue'
 import letteratura from '@/components/ViewSong/letteratura.vue'
@@ -43,7 +42,6 @@ export default {
     }
   },
   components: {
-    Panel,
     SongBase,
     YouTube,
     letteratura,

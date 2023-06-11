@@ -112,7 +112,6 @@
 
 <script>
 import SongService from '@/services/SongsService'
-import Panel from '@/components/Panel.vue'
 export default {
   data: () => ({
     valid: true,
@@ -135,9 +134,6 @@ export default {
     ],
     error: null
   }),
-  components: {
-    Panel
-  },
   methods: {
     validate() {
       this.$refs.form.validate()

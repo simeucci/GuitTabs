@@ -2,6 +2,7 @@
   <v-container>
     <v-row class="text-center" no-gutters>
       <v-col md="10" offset-md="1">
+        <song-search-panel />
         <panel title="Brani">
           <v-btn to="/songs/create" slot="action" class="light-blue accent-2" dark fab medium>
             <v-icon large>mdi-plus</v-icon>
@@ -28,12 +29,12 @@
 
 <script>
 import SongsService from '@/services/SongsService'
-import Panel from '@/components/Panel.vue'
 import SongBase from '@/components/SongBase.vue'
+import SongSearchPanel from './SongSearchPanel.vue'
 export default {
   components: {
-    Panel,
-    SongBase
+    SongBase,
+    SongSearchPanel
   },
   data() {
     return {

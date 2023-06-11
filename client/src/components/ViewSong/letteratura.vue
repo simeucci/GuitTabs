@@ -38,7 +38,6 @@
 </template>
 
 <script>
-import Panel from '@/components/Panel'
 import Conf from '@/config'
 export default {
   data() {
@@ -55,7 +54,6 @@ export default {
     }
   },
   components: {
-    Panel,
     Conf
   },
   props: [
