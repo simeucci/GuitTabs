@@ -14,7 +14,7 @@
         <br />
         <slot name="pulsanti" />
       </v-col>
-      <v-col md="6">
+      <v-col md="6" class="text-center">
         <img class="song-album-image" :src="song.albumImageUrl" />
         <div class="song-album">
           {{ song.album }}

@@ -1,7 +1,7 @@
 <template>
-  <panel :title="song.titolo">
-    <v-row no-gutters>
-      <v-col md="6" class="text-center pa-6">
+  <v-row no-gutters>
+    <v-col md="4">
+      <panel :title="song.titolo">
         <song-base :song="song">
           <div slot="pulsanti">
             <v-btn dark class="light-blue" @click="navigateTo({
@@ -14,20 +14,17 @@
             </v-btn>
           </div>
         </song-base>
-      </v-col>
-      <v-col md="6" class="text-center pa-6">
+      </panel>
+      <panel title="Youtube Video" class="mt-3">
         <you-tube :youtubeId="song.youtubeId" />
-      </v-col>
-    </v-row>
-    <v-row no-gutters>
-      <v-col md="6" class="pa-4">
-        <tablatura :tablaturaContent="song.tab" />
-      </v-col>
-      <v-col md="6" class="pa-4">
-        <lyrics :lyrics_content="song.lyrics" />
-      </v-col>
-    </v-row>
-  </panel>
+      </panel>
+    </v-col>
+    <v-col md="8" class="pl-3">
+      <letteratura
+        :song="song" 
+        />
+    </v-col>
+  </v-row>
 </template>
 
 <script>
@@ -35,8 +32,7 @@
 import Panel from '@/components/Panel.vue'
 import SongBase from '@/components/SongBase.vue'
 import YouTube from '@/components/ViewSong/YouTube.vue'
-import Tablatura from '@/components/ViewSong/Tablatura.vue'
-import Lyrics from '@/components/ViewSong/Lyrycs.vue'
+import letteratura from '@/components/ViewSong/letteratura.vue'
 // SERVIZI INSTALLATI
 import SongsService from '@/services/SongsService'
 // OUTPUT
@@ -50,9 +46,8 @@ export default {
     Panel,
     SongBase,
     YouTube,
-    Tablatura,
-    Lyrics
-  },
+    letteratura,
+},
   methods: {
     navigateTo(route) {
       this.$router.push(route)
