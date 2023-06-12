@@ -12,10 +12,10 @@
           <v-switch v-model="switch_accordi" label="Accordi" :disabled="disabled_accordi"></v-switch>
         </v-col>
         <v-col md="6" class="text-right">
-          <v-btn 
+          <v-btn
             v-if="!!song.midifile"
-            :href="midifile_url" 
-            class="light-blue accent-2 mt-3 mr-5" 
+            :href="midifile_url"
+            class="light-blue accent-2 mt-3 mr-5"
             dark>
             <v-icon medium>mdi-music-note</v-icon>Play Midi File
           </v-btn>
@@ -40,7 +40,7 @@
 <script>
 import Conf from '@/config'
 export default {
-  data() {
+  data () {
     return {
       switch_tab: false,
       switch_lyrics: false,
@@ -53,22 +53,19 @@ export default {
       midifile_url: null
     }
   },
-  components: {
-    Conf
-  },
   props: [
     'song'
   ],
 
-  async mounted() {
+  async mounted () {
     setTimeout(() => {
       this.switch_tab = !!this.song.tab
       this.switch_lyrics = !!this.song.lyrics
       this.switch_accordi = !!this.song.accordi
-      this.disabled_tab = !!!this.song.tab
-      this.disabled_lyrics = !!!this.song.lyrics
-      this.disabled_accordi = !!!this.song.accordi
-      if( this.song.midifile ){
+      this.disabled_tab = !this.song.tab
+      this.disabled_lyrics = !this.song.lyrics
+      this.disabled_accordi = !this.song.accordi
+      if (this.song.midifile) {
         this.midifile_url = Conf.baseUrlMidi + this.song.midifile
       }
     }, 300)

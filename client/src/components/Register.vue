@@ -31,40 +31,31 @@
 </template>
 
 <script>
-  import AuthenticationService from '@/services/AuthenticationService'
-  export default {
-    data () {
-      return {
-        email: '',
-        password: '',
-        error: null
-      }
-    },
-    methods:{
-      async register () {
-        try {
-          /*
-          await AuthenticationService.register({
-            email:this.email,
-            password: this.password 
-          })
-          */
-          const response = await AuthenticationService.register({
-            email:this.email,
-            password: this.password 
-          })
-          this.$store.dispatch('setToken', response.data.token)
-          this.$store.dispatch('setUser', response.data.user)
-          
-        } catch (error) {
-          this.error = error.response.data.error
-        }
-        //console.log('il pulsante Registrati è stato cliccato', this.email, this.password)
-        // const response = 
-        // console.log(response.data)
+import AuthenticationService from '@/services/AuthenticationService'
+export default {
+  data () {
+    return {
+      email: '',
+      password: '',
+      error: null
+    }
+  },
+  methods: {
+    async register () {
+      try {
+        const response = await AuthenticationService.register({
+          email: this.email,
+          password: this.password
+        })
+        this.$store.dispatch('setToken', response.data.token)
+        this.$store.dispatch('setUser', response.data.user)
+        this.$router.push({ name: 'login' })
+      } catch (error) {
+        this.error = error.response.data.error
       }
     }
   }
+}
 </script>
 
 <style scoped>

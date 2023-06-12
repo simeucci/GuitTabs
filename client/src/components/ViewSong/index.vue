@@ -4,12 +4,7 @@
       <panel :title="song.titolo">
         <song-base :song="song">
           <div slot="pulsanti">
-            <v-btn dark class="light-blue" @click="navigateTo({
-              name: 'song-edit',
-              params: {
-                songId: song.id
-              }
-            })">
+            <v-btn dark class="light-blue" :to="{name: 'song-edit', params: {songId: song.id}}">
               <v-icon small>mdi-pencil</v-icon>&nbsp;&nbsp;Modifica
             </v-btn>
           </div>
@@ -21,7 +16,7 @@
     </v-col>
     <v-col md="8" class="pl-3">
       <letteratura
-        :song="song" 
+        :song="song"
         />
     </v-col>
   </v-row>
@@ -31,12 +26,12 @@
 // COMPONENTI INSTALLATI
 import SongBase from '@/components/SongBase.vue'
 import YouTube from '@/components/ViewSong/YouTube.vue'
-import letteratura from '@/components/ViewSong/letteratura.vue'
+import letteratura from '@/components/ViewSong/TestoLyricsChords.vue'
 // SERVIZI INSTALLATI
 import SongsService from '@/services/SongsService'
 // OUTPUT
 export default {
-  data() {
+  data () {
     return {
       song: {}
     }
@@ -44,18 +39,14 @@ export default {
   components: {
     SongBase,
     YouTube,
-    letteratura,
-},
-  methods: {
-    navigateTo(route) {
-      this.$router.push(route)
-    }
+    letteratura
   },
-  async mounted() {
+  async mounted () {
     const songId = this.$store.state.route.params.songId
     this.song = (await SongsService.show(songId)).data
   }
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+</style>

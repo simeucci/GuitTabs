@@ -1,11 +1,11 @@
 <template>
-  <!-- v-container -->
   <v-row class="text-center" no-gutters>
     <v-col md="10" offset-md="1">
       <panel title="Modifica Brano">
         <v-form ref="form" v-model="valid" lazy-validation>
           <v-row>
             <v-col md="5">
+
               <v-text-field label="Titolo" :hide-details="valid" required :rules="titoloRegole" v-model="song.titolo">
               </v-text-field>
 
@@ -27,7 +27,6 @@
               <v-text-field label="File Midi" hint="Es. PPP_Stranieri/CCC_Gruppi/AAA_artist/Titolo.mid" v-model="song.midifile">
               </v-text-field>
 
-
             </v-col>
             <v-col md="7">
 
@@ -46,36 +45,36 @@
               <v-tabs-items v-model="schede">
                 <v-tab-item value="schede-1" >
                   <v-card flat class="pt-2">
-                    <v-textarea 
-                      outlined 
+                    <v-textarea
+                      outlined
                       class="mono_spaced"
-                      rows="11" 
+                      rows="11"
                       label="Tablatura"
                       hide-details
                       v-model="song.tab">
                     </v-textarea>
                   </v-card>
                 </v-tab-item>
-                <v-tab-item value="schede-2" >
+                <v-tab-item value="schede-2">
                   <v-card flat class="pt-2">
-                    <v-textarea 
-                      outlined 
+                    <v-textarea
+                      outlined
                       class="mono_spaced"
-                      rows="11" 
-                      label="Testo / Lyrics" 
-                      hide-details 
+                      rows="11"
+                      label="Testo / Lyrics"
+                      hide-details
                       v-model="song.lyrics">
                     </v-textarea>
                   </v-card>
                 </v-tab-item>
-                <v-tab-item value="schede-3" >
+                <v-tab-item value="schede-3">
                   <v-card flat class="pt-2">
-                    <v-textarea 
-                      outlined 
+                    <v-textarea
+                      outlined
                       class="mono_spaced"
-                      rows="11" 
+                      rows="11"
                       label="Accordi"
-                      hide-details 
+                      hide-details
                       v-model="song.accordi">
                     </v-textarea>
                   </v-card>
@@ -94,9 +93,9 @@
 
           <v-row class="text-center" no-gutters>
             <v-col md="12" offset-md="0" class="pt-4 pb-4">
-              <v-btn 
+              <v-btn
                 dark
-                class="light-blue" 
+                class="light-blue"
                 @click="aggiorna"
                 :disabled="!valid"
                 >
@@ -117,7 +116,7 @@ import SongService from '@/services/SongsService'
 export default {
   data: () => ({
     valid: true,
-    schede: null, 
+    schede: null,
     song: {
       titolo: null,
       artista: null,
@@ -130,26 +129,26 @@ export default {
       accordi: null,
       midifile: null
     },
-    titoloRegole:[
+    titoloRegole: [
       v => !!v || 'Il titolo è un campo obbligatorio',
-      v => (v && v.length <= 255) || 'La lunghezza massima per il titolo è 255 caratteri',
+      v => (v && v.length <= 255) || 'La lunghezza massima per il titolo è 255 caratteri'
     ],
     error: null
   }),
   methods: {
-    validate() {
+    validate () {
       this.$refs.form.validate()
     },
-    reset() {
+    reset () {
       this.$refs.form.reset()
     },
-    resetValidation() {
+    resetValidation () {
       this.$refs.form.resetValidation()
     },
-    async aggiorna() {
+    async aggiorna () {
       this.error = null
       this.validate()
-      if( !this.valid ){
+      if (!this.valid) {
         this.error = 'Devi prima compilare tutti i campi obbligatori.'
         return
       }
@@ -168,7 +167,7 @@ export default {
       }
     }
   },
-  async mounted() {
+  async mounted () {
     const songId = this.$store.state.route.params.songId
     this.song = (await SongService.show(songId)).data
     await this.validate()

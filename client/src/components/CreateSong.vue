@@ -43,10 +43,10 @@
               <v-tabs-items v-model="schede">
                 <v-tab-item value="schede-1" >
                   <v-card flat class="pt-2">
-                    <v-textarea 
-                      outlined 
+                    <v-textarea
+                      outlined
                       class="mono_spaced"
-                      rows="11" 
+                      rows="11"
                       label="Tablatura"
                       hide-details
                       v-model="song.tab">
@@ -55,30 +55,29 @@
                 </v-tab-item>
                 <v-tab-item value="schede-2" >
                   <v-card flat class="pt-2">
-                    <v-textarea 
-                      outlined 
+                    <v-textarea
+                      outlined
                       class="mono_spaced"
-                      rows="11" 
-                      label="Testo / Lyrics" 
-                      hide-details 
+                      rows="11"
+                      label="Testo / Lyrics"
+                      hide-details
                       v-model="song.lyrics">
                     </v-textarea>
                   </v-card>
                 </v-tab-item>
                 <v-tab-item value="schede-3" >
                   <v-card flat class="pt-2">
-                    <v-textarea 
-                      outlined 
+                    <v-textarea
+                      outlined
                       class="mono_spaced"
-                      rows="11" 
+                      rows="11"
                       label="Accordi"
-                      hide-details 
+                      hide-details
                       v-model="song.accordi">
                     </v-textarea>
                   </v-card>
                 </v-tab-item>
               </v-tabs-items>
-
 
             </v-col>
           </v-row>
@@ -92,12 +91,11 @@
 
           <v-row class="text-center" no-gutters>
             <v-col md="12" offset-md="0" class="pt-4 pb-4">
-              <v-btn 
+              <v-btn
                 dark
-                class="light-blue" 
+                class="light-blue"
                 @click="create"
-                :disabled="!valid"
-                >
+                :disabled="!valid">
                 Aggiungi Nuovo Brano
               </v-btn>
             </v-col>
@@ -107,7 +105,6 @@
       </panel>
     </v-col>
   </v-row>
-  <!-- /v-container -->
 </template>
 
 <script>
@@ -128,26 +125,26 @@ export default {
       accordi: null,
       midifile: null
     },
-    titoloRegole:[
+    titoloRegole: [
       v => !!v || 'Il titolo è un campo obbligatorio',
-      v => (v && v.length <= 255) || 'La lunghezza massima per il titolo è 255 caratteri',
+      v => (v && v.length <= 255) || 'La lunghezza massima per il titolo è 255 caratteri'
     ],
     error: null
   }),
   methods: {
-    validate() {
+    validate () {
       this.$refs.form.validate()
     },
-    reset() {
+    reset () {
       this.$refs.form.reset()
     },
-    resetValidation() {
+    resetValidation () {
       this.$refs.form.resetValidation()
     },
-    async create() {
+    async create () {
       this.error = null
       this.validate()
-      if( !this.valid ){
+      if (!this.valid) {
         this.error = 'Devi prima compilare tutti i campi obbligatori.'
         return
       }
@@ -163,7 +160,7 @@ export default {
       }
     }
   },
-  async mounted() {
+  async mounted () {
     await this.validate()
   }
 }

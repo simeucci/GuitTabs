@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  data (){
+  data () {
     return {}
   },
   props: [
@@ -17,10 +17,8 @@ export default {
       return 'https://www.youtube.com/embed/' + this.youtubeId
     }
   }
-
 }
 </script>
-
 
 <style scoped>
 .videoWrapper {
