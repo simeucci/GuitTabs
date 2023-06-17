@@ -32,5 +32,11 @@ module.exports = (sequelize, DataTypes) => {
     // return bcrypt.compareAsync(password, this.password)
     return bcrypt.compareSync(password, this.password)
   }
+
+  User.associate = function (models) {
+    models.User.hasMany(models.UserSong_, { foreignKey: 'UserId' })
+    // models.User.hasMany(models.Recent, { foreignKey: 'UserId' })
+  }
+
   return User
 }

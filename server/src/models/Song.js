@@ -11,5 +11,11 @@ module.exports = (sequelize, DataTypes) => {
     accordi: DataTypes.TEXT,
     midifile: DataTypes.STRING
   })
+
+  Song.associate = function (models) {
+    models.Song.hasMany(models.UserSong_, { foreignKey: 'SongId' })
+    // models.Song.hasMany(models.Recent, { foreignKey: 'SongId' })
+  }
+
   return Song
 }

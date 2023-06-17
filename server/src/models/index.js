@@ -22,7 +22,10 @@ fs
 db.sequelize = sequelize
 db.Sequelize = SequelizeLib
 
-db.User.belongsToMany(db.Song, { through: db.UserSong_ })
-db.Song.belongsToMany(db.User, { through: db.UserSong_ })
+Object.keys(db).forEach(function (modelName) {
+  if ('associate' in db[modelName]) {
+    db[modelName].associate(db)
+  }
+})
 
 module.exports = db

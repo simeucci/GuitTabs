@@ -1,12 +1,14 @@
 const {
   sequelize,
   Song,
-  User
+  User,
+  UserSong_
 } = require('../models')
 
 const Promise = require('bluebird')
 const songs = require('./songs.json')
 const users = require('./users.json')
+const UsersSongsJson = require('./usersong_s.json')
 
 sequelize.sync({ force: true })
   .then(
@@ -28,4 +30,14 @@ sequelize.sync({ force: true })
         )
       )
     }
+  )
+  .then(
+    setTimeout(function () {
+      UsersSongsJson.map(
+        usersong_ => {
+          UserSong_.create(usersong_)
+          return usersong_
+        }
+      )
+    }, 1000)
   )

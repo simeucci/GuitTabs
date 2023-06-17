@@ -12,7 +12,7 @@
           <h3>Guitar Tabs</h3>
         </v-toolbar-title>
       </router-link>
-      <v-toolbar-items>
+      <v-toolbar-items class="ml-2">
         <v-btn text :to="{name: 'songs'}">
           Sfoglia
         </v-btn>
